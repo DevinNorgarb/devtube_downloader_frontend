@@ -22,22 +22,23 @@
 import axios from 'axios';
 export default {
     name: 'DownloadResult',
-    mounted() {},
+    //mounted() {},
     props: [
-        "result"
+        'result'
     ],
     data() {
         return {
-            youtubeURL: ''
+            youtubeURL: null
         }
     },
     methods: {
         getInfo() {
+
             var url = this.youtubeURL
             // Optionally the request above could also be done as
             axios.get('https://devtube-api.devswebdev.com/api/download?url', {
                     params: {
-                        url: url
+                        url: this.youtubeURL
                     }
                 })
                 .then(function(response) {

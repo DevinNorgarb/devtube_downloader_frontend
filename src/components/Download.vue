@@ -21,13 +21,13 @@
 
 <script lang="vue">
 import axios from 'axios';
-import DownloadResult from "./DownloadResult";
+import DownloadResult from './DownloadResult';
 export default {
     name: 'download',
     components: {
-        "download-result": DownloadResult
+        'download-result': DownloadResult
     },
-    mounted() {},
+    //mounted() {},
     data() {
         return {
             youtubeURL: 'https://www.youtube.com/watch?v=hq7mUsU8ASY',

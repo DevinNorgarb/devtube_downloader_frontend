@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-            Devtube Downloader
+          Quasar App
         </q-toolbar-title>
 
-        <div>{{ $q.version }}</div>
+        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -46,7 +46,7 @@
   </q-layout>
 </template>
 
-<script lang="ts">
+<script>
 import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
@@ -94,13 +94,14 @@ const linksData = [
   }
 ];
 
-import { Vue, Component } from 'vue-property-decorator';
-
-@Component({
-  components: { EssentialLink }
-})
-export default class MainLayout extends Vue {
-  leftDrawerOpen = false;
-  essentialLinks = linksData;
+export default {
+  name: 'MainLayout',
+  components: { EssentialLink },
+  data () {
+    return {
+      leftDrawerOpen: false,
+      essentialLinks: linksData
+    }
+  }
 }
 </script>
