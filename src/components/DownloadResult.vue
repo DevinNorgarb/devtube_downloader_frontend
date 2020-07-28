@@ -2,16 +2,15 @@
     <div>
   <div class="q-pa-md">
     <q-card class="my-card">
-      <q-video src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0" />
+      <q-video :src="`https://www.youtube.com/embed/${result.id}?rel=0`" />
 
       <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
+        <div class="text-h4  text-black">{{result.title}}</div>
+        <div class="text-h5 ">{{result.uploader}}</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        {{result.description}}
       </q-card-section>
     </q-card>
   </div>
