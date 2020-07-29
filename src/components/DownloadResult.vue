@@ -11,7 +11,10 @@
 
       <q-card-section class="q-pt-none">
         {{result.description}}
+        <hr>
+          <q-btn align="right" class="btn-fixed-width " style="margin: 10px" @click="download()" color="primary" label="Download"></q-btn>
       </q-card-section>
+
     </q-card>
   </div>
     </div>
@@ -31,6 +34,24 @@ export default {
         }
     },
     methods: {
+        download() {
+            console.log()
+              axios({
+                    //url: this.result.url,
+                    url: 'https://devtube-api.devswebdev.com/api/download?url='+ this.result.webpage_url,
+                    method: 'GET',
+                    // responseType: 'blob',
+                }).then((response) => {
+                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                     var fileLink = document.createElement('a');
+
+                     fileLink.href = fileURL;
+                     fileLink.setAttribute('download', this.result.title+".mp4");
+                     document.body.appendChild(fileLink);
+
+                     fileLink.click();
+                });
+        },
         getInfo() {
 
             var url = this.youtubeURL

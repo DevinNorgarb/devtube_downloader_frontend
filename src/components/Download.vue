@@ -9,9 +9,9 @@
 
 
 
-            <div v-if="showResult && Object.keys(result).length >= 1">
-                <h1 class="Title">Result
-                </h1>
+            <div style="margin-top: 40px;" v-if="showResult && Object.keys(result).length >= 1">
+                <h3 class="Title">Result
+                </h3>
                 <download-result :result="result"></download-result>
             </div>
         </div>
@@ -39,7 +39,7 @@ export default {
         getInfo() {
             var url = this.youtubeURL
             this.showResult = true
-            axios.get('https://devtube-api.devswebdev.com/api/download', {
+            axios.get('https://devtube-api.devswebdev.com/api/download-info', {
                     params: {
                         url: url
                     }
