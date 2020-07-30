@@ -1,14 +1,12 @@
 <template>
-    <div>
-        <div class="Wrapper">
+    <div class="window-width" style="top: 0">
+        <div    class="	">
             <h1 class="Title">Online Video Downloader
             </h1>
-            <div class="Input">
-                <input v-model="youtubeURL" @keydown.enter="getInfo()" type="text" id="input" class="Input-text" placeholder="">
+            <div class=" row">
+                <input  v-model="youtubeURL" @keydown.enter="getInfo()" type="text" id="input" class=" col-sm-10 col-md-10 col-lg-10" placeholder="">
+          <q-btn align="right" class="btn-fixed-width " style=" margin:  -1px 10px -1px 0px;" @click="getInfo()" color="primary" label="Download"></q-btn>
             </div>
-
-
-
             <div style="margin-top: 40px;" v-if="showResult && Object.keys(result).length >= 1">
                 <h3 class="Title">Result
                 </h3>
@@ -37,6 +35,10 @@ export default {
     },
     methods: {
         getInfo() {
+            this.$q.loading.show({
+  delay: 400 // ms
+})
+
             var url = this.youtubeURL
             this.showResult = true
             axios.get('https://devtube-api.devswebdev.com/api/download-info', {
@@ -47,9 +49,13 @@ export default {
                 .then((response) => {
                     console.log(response);
                     this.result = Object.assign({}, response.data)
+
+this.$q.loading.hide()
                 })
-                .catch(function(error) {
+                .catch((error) => {
                     console.log(error);
+
+this.$q.loading.hide()
                 });
 
         }
@@ -103,11 +109,13 @@ html {
 }
 
 body {
+        top: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    width: 100vw; // height: 100vh;
+    width: 100%; // height: 100vh;
     color: #455A64;
     background-color: #44484c;
     font-family: var(--fontFamily);
@@ -116,12 +124,13 @@ body {
 }
 
 .Wrapper {
-    flex: 0 0 80%;
+    top: 0;
+    flex: 0 0 0%;
     max-width: 100%;
 }
 
 .Title {
-    margin: 0 0 var(--gutterXx) 0;
+    // margin: 0 0 var(--gutterXx) 0;
     padding: 0;
     color: #fff;
     font-size: var(--fontSizeXx);
@@ -140,7 +149,7 @@ body {
     margin: 0;
     padding: var(--inputPaddingV) var(--inputPaddingH);
     color: inherit;
-    width: 100%;
+    width: 1000px;
     font-family: inherit;
     font-size: var(--inputFontSize);
     font-weight: inherit;
@@ -162,7 +171,7 @@ body {
 .Input-label {
     display: block;
     position: absolute;
-    bottom: 50%;
+    // bottom: 50%;
     left: 1rem;
     color: #fff;
     font-family: inherit;

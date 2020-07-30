@@ -35,8 +35,8 @@ export default {
     },
     methods: {
         download() {
-            console.log()
-              axios({
+// "Protocol Error: Attempted to dispatch an unspecified method 'Page.downloadProgress'
+axios({
                     //url: this.result.url,
                     url: 'https://devtube-api.devswebdev.com/api/download?url='+ this.result.webpage_url,
                     method: 'GET',

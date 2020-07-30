@@ -179,8 +179,11 @@ module.exports = configure(function(ctx) {
         // https://www.electron.build/configuration/configuration
 
         // appId: 'Devtube Downloader'
-          appId: "com.devswebdev.devtube"
-
+        appId: 'com.devswebdev.devtube',
+        linux: {
+          target: ['deb', 'zip'],
+          icon: 'assets/dl.svg'
+        }
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
